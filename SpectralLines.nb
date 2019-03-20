@@ -1,0 +1,230 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8893,        222]
+NotebookOptionsPosition[      8499,        204]
+NotebookOutlinePosition[      8842,        219]
+CellTagsIndexPosition[      8799,        216]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.720052604816182*^9, 3.720052608244793*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"spectrum", "[", "list_List", "]"}], ":=", 
+   RowBox[{"Graphics", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Thickness", "[", "0.005", "]"}], ",", 
+         RowBox[{
+          RowBox[{"ColorData", "[", "\"\<VisibleSpectrum\>\"", "]"}], "[", 
+          "#", "]"}], ",", 
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"#", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"#", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], "&"}], "/@",
+       "list"}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"380", ",", "750"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "1"}], "}"}]}], "}"}]}], ",", 
+     RowBox[{"PlotRangePadding", "\[Rule]", "None"}], ",", 
+     RowBox[{"ImagePadding", "\[Rule]", "All"}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", 
+      RowBox[{"1", "/", "5"}]}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+     RowBox[{"Axes", "\[Rule]", "None"}], ",", 
+     RowBox[{"Frame", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"True", ",", "False", ",", "True", ",", "False"}], "}"}]}], 
+     ",", 
+     RowBox[{"Prolog", "\[Rule]", 
+      RowBox[{"Rectangle", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"1000", ",", "1"}], "}"}]}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Wavelengths", " ", "in", " ", "nanometers"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ne", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "448.809226", ",", "533.07775", ",", "540.05617", ",", "565.65664", ",", 
+     "576.44188", ",", "580.44496", ",", "585.24878", ",", "588.1895", ",", 
+     "594.48342", ",", "609.61631", ",", "612.84499", ",", "626.6495", ",", 
+     "633.44278", ",", "638.29917", ",", "640.2246", ",", "650.65281", ",", 
+     "667.82764", ",", "703.24131", ",", "724.51666", ",", "743.8899", ",", 
+     "748.88712"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"NaData", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "4747.859", ",", "4751.709", ",", "4494.184", ",", "4497.555", ",", 
+      "5890.065", ",", "5896.069", ",", "5682.539", ",", "5688.15", ",", 
+      "6154.325", ",", "6160.887"}], "}"}], "/", "10"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NaActual", "=", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "4494.266", ",", "4497.724", ",", "4748.016", ",", "4751.891", ",", 
+       "5682.657", ",", "5688.224", ",", "5889.953", ",", "5895.923", ",", 
+       "6154.229", ",", "6160.760"}], "}"}], "/", "10"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{"spectrum", "[", "Ne", "]"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{"spectrum", "[", "NaData", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"spectrum", "[", "NaActual", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"spectrum", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{"i", ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "400", ",", "750", ",", "0.01"}], "}"}]}], "]"}], 
+    "]"}], "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.72005000097044*^9, 3.72005001369176*^9}, {
+  3.7200501007694817`*^9, 3.7200503090770493`*^9}, {3.7200507997068944`*^9, 
+  3.7200508066248527`*^9}, {3.720052382721857*^9, 3.7200524180610285`*^9}, {
+  3.7200525350845556`*^9, 3.7200525916354322`*^9}, {3.720052653428707*^9, 
+  3.720052741232079*^9}, {3.720052872748155*^9, 3.720052894828266*^9}, {
+  3.7200529691220093`*^9, 3.720053050202757*^9}, {3.720053092868373*^9, 
+  3.7200532628493886`*^9}, {3.7200532930478954`*^9, 3.7200533262784724`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[0., 0.3473497623398754, 0.8729104360466988], Thickness[0.005], 
+    LineBox[{{474.7859000000001, 0}, {474.7859000000001, 1}}]}, 
+   {RGBColor[0., 0.35514412386087296`, 0.8671219513701958], Thickness[0.005], 
+    LineBox[{{475.1709, 0}, {475.1709, 1}}]}, 
+   {RGBColor[0.21184764164436817`, 0., 1.], Thickness[0.005], 
+    LineBox[{{449.4184, 0}, {449.4184, 1}}]}, 
+   {RGBColor[0.2050999290115939, 0., 1.], Thickness[0.005], 
+    LineBox[{{449.75550000000004`, 0}, {449.75550000000004`, 1}}]}, 
+   {RGBColor[0.8676223481433419, 0.9047202231636132, 0.], Thickness[0.005], 
+    LineBox[{{589.0065, 0}, {589.0065, 1}}]}, 
+   {RGBColor[0.882353420625914, 0.9004958586103449, 0.], Thickness[0.005], 
+    LineBox[{{589.6069000000001, 0}, {589.6069000000001, 1}}]}, 
+   {RGBColor[0.15334409399173193`, 0.9965316006324495, 0.], Thickness[0.005], 
+    LineBox[{{568.2539, 0}, {568.2539, 1}}]}, 
+   {RGBColor[0.1797866309900244, 0.9959335125273656, 0.], Thickness[0.005], 
+    LineBox[{{568.8149999999999, 0}, {568.8149999999999, 1}}]}, 
+   {RGBColor[1., 0.5811214829333544, 0.], Thickness[0.005], 
+    LineBox[{{615.4325, 0}, {615.4325, 1}}]}, 
+   {RGBColor[1., 0.5690953171315057, 0.], Thickness[0.005], 
+    LineBox[{{616.0887, 0}, {616.0887, 1}}]}},
+  AspectRatio->NCache[
+    Rational[1, 5], 0.2],
+  Axes->None,
+  Frame->{True, False, True, False},
+  ImagePadding->All,
+  ImageSize->Large,
+  PlotRange->{{380, 750}, {0, 1}},
+  PlotRangePadding->None,
+  Prolog->RectangleBox[{0, 0}, {1000, 1}]]], "Output",
+ CellChangeTimes->{
+  3.7200500200053215`*^9, 3.720050309612403*^9, 3.7200524185523605`*^9, {
+   3.720052592190301*^9, 3.7200526113507934`*^9}, {3.7200526558836017`*^9, 
+   3.720052703582687*^9}, 3.7200527378751726`*^9, {3.720052877517275*^9, 
+   3.720052895050466*^9}, {3.720052976940114*^9, 3.720053051128363*^9}, {
+   3.7200531012502966`*^9, 3.720053263053546*^9}, {3.7200532963895874`*^9, 
+   3.720053326878379*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[0.21168350268385597`, 0., 1.], Thickness[0.005], 
+    LineBox[{{449.4266, 0}, {449.4266, 1}}]}, 
+   {RGBColor[0.20476164261736662`, 0., 1.], Thickness[0.005], 
+    LineBox[{{449.77240000000006`, 0}, {449.77240000000006`, 1}}]}, 
+   {RGBColor[0., 0.34766761032917176`, 0.8726743861520996], Thickness[0.005], 
+    LineBox[{{474.8016, 0}, {474.8016, 1}}]}, 
+   {RGBColor[0., 0.35551258458731977`, 0.8668483139127614], Thickness[0.005], 
+    LineBox[{{475.1891, 0}, {475.1891, 1}}]}, 
+   {RGBColor[0.15390018370226438`, 0.9965190227681828, 0.], Thickness[0.005], 
+    LineBox[{{568.2657, 0}, {568.2657, 1}}]}, 
+   {RGBColor[0.18013536521527726`, 0.9959256247141814, 0.], Thickness[0.005], 
+    LineBox[{{568.8224, 0}, {568.8224, 1}}]}, 
+   {RGBColor[0.8673475513215505, 0.9047990254337602, 0.], Thickness[0.005], 
+    LineBox[{{588.9953, 0}, {588.9953, 1}}]}, 
+   {RGBColor[0.8819952033403597, 0.9005985829982164, 0.], Thickness[0.005], 
+    LineBox[{{589.5923, 0}, {589.5923, 1}}]}, 
+   {RGBColor[1., 0.5812974219636767, 0.], Thickness[0.005], 
+    LineBox[{{615.4229, 0}, {615.4229, 1}}]}, 
+   {RGBColor[1., 0.5693280698070367, 0.], Thickness[0.005], 
+    LineBox[{{616.076, 0}, {616.076, 1}}]}},
+  AspectRatio->NCache[
+    Rational[1, 5], 0.2],
+  Axes->None,
+  Frame->{True, False, True, False},
+  ImagePadding->All,
+  ImageSize->Large,
+  PlotRange->{{380, 750}, {0, 1}},
+  PlotRangePadding->None,
+  Prolog->RectangleBox[{0, 0}, {1000, 1}]]], "Output",
+ CellChangeTimes->{
+  3.7200500200053215`*^9, 3.720050309612403*^9, 3.7200524185523605`*^9, {
+   3.720052592190301*^9, 3.7200526113507934`*^9}, {3.7200526558836017`*^9, 
+   3.720052703582687*^9}, 3.7200527378751726`*^9, {3.720052877517275*^9, 
+   3.720052895050466*^9}, {3.720052976940114*^9, 3.720053051128363*^9}, {
+   3.7200531012502966`*^9, 3.720053263053546*^9}, {3.7200532963895874`*^9, 
+   3.7200533268903885`*^9}}]
+}, Open  ]]
+},
+WindowSize->{759, 697},
+WindowMargins->{{Automatic, 236}, {30, Automatic}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 140, 2, 30, "Input"],
+Cell[CellGroupData[{
+Cell[723, 26, 3875, 97, 354, "Input"],
+Cell[4601, 125, 1963, 37, 146, "Output"],
+Cell[6567, 164, 1916, 37, 146, "Output"]
+}, Open  ]]
+}
+]
+*)
+

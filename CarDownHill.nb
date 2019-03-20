@@ -1,0 +1,542 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     18043,        534]
+NotebookOptionsPosition[     16403,        473]
+NotebookOutlinePosition[     16746,        488]
+CellTagsIndexPosition[     16703,        485]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "Car Down Hill with Pendulum\n",
+ StyleBox["Numerical Solution and Animation\n", "Chapter"],
+ StyleBox["27 November 2017", "Text",
+  FontColor->GrayLevel[0]]
+}], "Title",
+ CellChangeTimes->{{3.694455436887492*^9, 3.6944554886314635`*^9}, {
+  3.69445652228261*^9, 3.6944565398791523`*^9}, {3.6944569729827423`*^9, 
+  3.694456982132852*^9}, {3.7207451307393427`*^9, 3.720745152941041*^9}, {
+  3.720827019889167*^9, 3.7208270199638996`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Remove", "[", "\"\<Global`*\>\"", "]"}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell["Constants", "Section",
+ CellChangeTimes->{{3.6944548084539757`*^9, 3.6944548198129053`*^9}, 
+   3.694455822298416*^9}],
+
+Cell[CellGroupData[{
+
+Cell["Physical", "Subsubsubsubsection",
+ CellChangeTimes->{{3.6944559980866804`*^9, 3.694456000457857*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "=", "1"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"acceleration", " ", "due", " ", "to", " ", "gravity"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"l", "=", "1"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"length", " ", "of", " ", "pendulum", " ", "arm"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Alpha]", "=", 
+    RowBox[{"Pi", "/", "16"}]}], ";", " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "angle", " ", "of", " ", "road", " ", "to", " ", "the", " ", 
+     "horizontal"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    SubscriptBox["m", "c"], "=", "2"}], ";", 
+   RowBox[{"(*", " ", 
+    RowBox[{"mass", " ", "of", " ", "car"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    SubscriptBox["m", "p"], "=", "1"}], ";"}], 
+  RowBox[{"(*", " ", 
+   RowBox[{"pendulum", " ", "mass"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.694454469101902*^9, 3.6944544958031626`*^9}, {
+   3.694454588006667*^9, 3.694454656330842*^9}, {3.6944547248638*^9, 
+   3.694454741329356*^9}, {3.6944548921414623`*^9, 3.694454892441615*^9}, {
+   3.694455291309144*^9, 3.6944552986915264`*^9}, {3.6944553724414415`*^9, 
+   3.6944553863601513`*^9}, 3.694455814557772*^9, {3.6944559060952873`*^9, 
+   3.694455907698118*^9}, {3.720745282995918*^9, 3.7207452892160807`*^9}, {
+   3.7207456294907494`*^9, 3.7207456381153297`*^9}, {3.7207507899474173`*^9, 
+   3.7207508196848717`*^9}, {3.7207509176723137`*^9, 3.720750918001055*^9}, {
+   3.7208267542886386`*^9, 3.720826754453356*^9}, {3.72082682512773*^9, 
+   3.720826825362644*^9}, {3.720826866873377*^9, 3.7208268686082897`*^9}, {
+   3.7208269154035616`*^9, 3.7208270015578785`*^9}, {3.720827326094328*^9, 
+   3.7208273278413324`*^9}, {3.7208276339504266`*^9, 
+   3.7208276571595907`*^9}, {3.7208277339733334`*^9, 3.7208277932882977`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Animation", "Subsubsubsubsection",
+ CellChangeTimes->{{3.6944559198226223`*^9, 3.694455923822819*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tmax", "=", "7"}], ";", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"run", " ", "animation", " ", "from", " ", "t"}], "=", 
+    RowBox[{
+     RowBox[{"0", " ", "to", " ", "t"}], "=", "tmax"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"animationRate", "=", "1"}], ";", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"1", " ", "second", " ", "real", " ", "time"}], " ", "=", " ", 
+    RowBox[{"animationRate", " ", "second", " ", "animation", " ", "time"}]}],
+    " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.6944559449789014`*^9, 3.694455945263319*^9}, 
+   3.694456709771224*^9, {3.7207460041878643`*^9, 3.7207460043283873`*^9}, 
+   3.720750550311968*^9, 3.7207506827182007`*^9, 3.720750715474327*^9, {
+   3.720750787588605*^9, 3.720750804486846*^9}, {3.720827030097015*^9, 
+   3.7208271248074636`*^9}, {3.7208273520903645`*^9, 3.720827352795183*^9}, {
+   3.7208274966380997`*^9, 3.7208274970085793`*^9}, {3.7208276648014154`*^9, 
+   3.7208276775821657`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Initial Conditions", "Subsubsubsubsection",
+ CellChangeTimes->{{3.6944559503000827`*^9, 3.6944559551527395`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"initCond", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"\[Theta]", "[", "0", "]"}], "\[Equal]", 
+      RowBox[{"\[Pi]", "/", "6"}]}], ",", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "initial", " ", "angle", " ", "of", " ", "pendulum", " ", "mass", " ", 
+       "wrt", " ", "the", " ", "horizontal"}], " ", "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"\[Theta]", "'"}], "[", "0", "]"}], "\[Equal]", "0"}], ",", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "initial", " ", "angular", " ", "velocity", " ", "of", " ", "pendulum", 
+       " ", "mass"}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"d", "[", "0", "]"}], "\[Equal]", "0"}], ",", 
+     RowBox[{"(*", " ", 
+      RowBox[{
+      "initial", " ", "displacement", " ", "of", " ", "car", " ", "along", 
+       " ", "road"}], " ", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"d", "'"}], "[", "0", "]"}], "\[Equal]", "0"}]}], " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "initial", " ", "speed", " ", "of", " ", "car", " ", "along", " ", 
+      "road"}], " ", "*)"}], "\[IndentingNewLine]", "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6944564221697254`*^9, 3.6944564231547365`*^9}, {
+   3.69445674952686*^9, 3.694456776198413*^9}, {3.704302975595672*^9, 
+   3.7043029773153353`*^9}, {3.704303064274904*^9, 3.704303066920512*^9}, {
+   3.720745181315672*^9, 3.7207452066429963`*^9}, 3.7207459732098646`*^9, {
+   3.7208267710356054`*^9, 3.720826775267984*^9}, {3.7208271291462955`*^9, 
+   3.7208272048562737`*^9}, {3.720827651175696*^9, 3.720827651301158*^9}, {
+   3.720827727450246*^9, 3.72082772962132*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Coordinates", "Section",
+ CellChangeTimes->{{3.6944551085725822`*^9, 3.6944551504532337`*^9}, {
+  3.694455266444992*^9, 3.694455284047998*^9}, {3.6944556895790796`*^9, 
+  3.6944556914658203`*^9}, {3.69445615567222*^9, 3.6944561603120537`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Car", "Subsubsubsubsection",
+ CellChangeTimes->{{3.694455744587427*^9, 3.694455764069259*^9}, {
+  3.720745233129031*^9, 3.720745246975189*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    SubscriptBox["x", "c"], "[", "t_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"Cos", "[", "\[Alpha]", "]"}], 
+    RowBox[{"d", "[", "t", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    SubscriptBox["y", "c"], "[", "t_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"-", 
+     RowBox[{"Sin", "[", "\[Alpha]", "]"}]}], 
+    RowBox[{"d", "[", "t", "]"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.720745260507268*^9, 3.7207452644769278`*^9}, {
+  3.720745501607106*^9, 3.7207455180454226`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Pendulum Mass", "Subsubsubsubsection",
+ CellChangeTimes->{{3.694455744587427*^9, 3.694455764069259*^9}, {
+  3.720745233129031*^9, 3.7207452339727573`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    SubscriptBox["x", "p"], "[", "t_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["x", "c"], "[", "t", "]"}], "+", 
+    RowBox[{"l", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    SubscriptBox["y", "p"], "[", "t_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["y", "c"], "[", "t", "]"}], "-", 
+    RowBox[{"l", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7207455270940523`*^9, 3.7207455364727616`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Section",
+ CellChangeTimes->{{3.6944551622474957`*^9, 3.694455198643525*^9}, {
+  3.6944561816707287`*^9, 3.69445618871097*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Lagrangian", "Subsubsubsubsection",
+ CellChangeTimes->{{3.6944561980945034`*^9, 3.6944562023856335`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"L", "=", 
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "2"], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        SubscriptBox["m", "c"], " ", 
+        SuperscriptBox[
+         RowBox[{
+          RowBox[{
+           SubscriptBox["x", "c"], "'"}], "[", "t", "]"}], "2"]}], "+", 
+       RowBox[{
+        SubscriptBox["m", "c"], " ", 
+        SuperscriptBox[
+         RowBox[{
+          RowBox[{
+           SubscriptBox["y", "c"], "'"}], "[", "t", "]"}], "2"]}], "+", 
+       RowBox[{
+        SubscriptBox["m", "p"], " ", 
+        SuperscriptBox[
+         RowBox[{
+          RowBox[{
+           SubscriptBox["x", "p"], "'"}], "[", "t", "]"}], "2"]}], "+", 
+       RowBox[{
+        SubscriptBox["m", "p"], " ", 
+        SuperscriptBox[
+         RowBox[{
+          SubscriptBox["y", "p"], "[", "t", "]"}], "2"]}]}], ")"}]}], "-", 
+    RowBox[{
+     SubscriptBox["m", "c"], "g", " ", 
+     RowBox[{
+      SubscriptBox["y", "c"], "[", "t", "]"}]}], "-", 
+    RowBox[{
+     SubscriptBox["m", "p"], " ", "g", " ", 
+     RowBox[{
+      SubscriptBox["y", "p"], "[", "t", "]"}]}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.694455246021094*^9, 3.6944552464740915`*^9}, 
+   3.694455573178364*^9, 3.694455628826696*^9, {3.6944562135333166`*^9, 
+   3.6944562170015335`*^9}, {3.7207455812527666`*^9, 3.7207456644001703`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Equation Motion", "Subsubsubsubsection",
+ CellChangeTimes->{{3.6944562279046135`*^9, 3.6944562372794876`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"eom", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Simplify", "[", 
+      RowBox[{
+       RowBox[{"D", "[", 
+        RowBox[{"L", ",", 
+         RowBox[{"\[Theta]", "[", "t", "]"}]}], "]"}], "\[Equal]", 
+       RowBox[{"Dt", "[", 
+        RowBox[{
+         RowBox[{"D", "[", 
+          RowBox[{"L", ",", 
+           RowBox[{
+            RowBox[{"\[Theta]", "'"}], "[", "t", "]"}]}], "]"}], ",", "t"}], 
+        "]"}]}], "]"}], ",", 
+     RowBox[{"Simplify", "[", 
+      RowBox[{
+       RowBox[{"D", "[", 
+        RowBox[{"L", ",", 
+         RowBox[{"d", "[", "t", "]"}]}], "]"}], "\[Equal]", 
+       RowBox[{"Dt", "[", 
+        RowBox[{
+         RowBox[{"D", "[", 
+          RowBox[{"L", ",", 
+           RowBox[{
+            RowBox[{"d", "'"}], "[", "t", "]"}]}], "]"}], ",", "t"}], "]"}]}],
+       "]"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.694456247277169*^9, 3.69445624777782*^9}, {
+  3.72074568079243*^9, 3.720745704183256*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Numerical Solution", "Subsubsubsubsection",
+ CellChangeTimes->{{3.6944562726370173`*^9, 3.69445627552335*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"soln", "=", 
+   RowBox[{"NDSolveValue", "[", 
+    RowBox[{
+     RowBox[{"Join", "[", 
+      RowBox[{"eom", ",", "initCond"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Theta]", ",", "d"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "tmax"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"replace", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[Theta]", "\[Rule]", 
+      RowBox[{"soln", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+     RowBox[{"d", "\[Rule]", 
+      RowBox[{"soln", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}]}], "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.720745712529683*^9, 3.7207457287315383`*^9}, {
+  3.7208275957455997`*^9, 3.720827596762994*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Animation", "Section",
+ CellChangeTimes->{{3.694455252701598*^9, 3.694455253418116*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Animate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Graphics", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"Black", ",", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              SubscriptBox["x", "c"], "[", "0", "]"}], ",", 
+             RowBox[{
+              SubscriptBox["y", "c"], "[", "0", "]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              SubscriptBox["x", "c"], "[", "tmax", "]"}], ",", 
+             RowBox[{
+              SubscriptBox["y", "c"], "[", "tmax", "]"}]}], "}"}]}], "}"}], 
+         "]"}], ",", " ", 
+        RowBox[{"(*", " ", "Road", " ", "*)"}], "\[IndentingNewLine]", "Blue",
+         ",", 
+        RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+        RowBox[{"Point", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            SubscriptBox["x", "c"], "[", "t", "]"}], ",", 
+           RowBox[{
+            SubscriptBox["y", "c"], "[", "t", "]"}]}], "}"}], "]"}], ",", " ", 
+        RowBox[{"(*", " ", "Car", " ", "*)"}], "\[IndentingNewLine]", "Green",
+         ",", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              SubscriptBox["x", "c"], "[", "t", "]"}], ",", 
+             RowBox[{
+              SubscriptBox["y", "c"], "[", "t", "]"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              SubscriptBox["x", "p"], "[", "t", "]"}], ",", 
+             RowBox[{
+              SubscriptBox["y", "p"], "[", "t", "]"}]}], "}"}]}], "}"}], 
+         "]"}], ",", " ", 
+        RowBox[{"(*", " ", 
+         RowBox[{"Pendululm", " ", "Arm"}], " ", "*)"}], 
+        "\[IndentingNewLine]", "Red", ",", 
+        RowBox[{"PointSize", "[", "Large", "]"}], ",", 
+        RowBox[{"Point", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            SubscriptBox["x", "p"], "[", "t", "]"}], ",", 
+           RowBox[{
+            SubscriptBox["y", "p"], "[", "t", "]"}]}], "}"}], "]"}]}], " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{"Pendulum", " ", "mass"}], " ", "*)"}], "\[IndentingNewLine]",
+        "}"}], "/.", "replace"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             SubscriptBox["x", "c"], "[", "0", "]"}], "-", "l"}], ",", 
+           RowBox[{
+            RowBox[{
+             SubscriptBox["x", "c"], "[", "tmax", "]"}], "+", "l"}]}], "}"}], 
+         ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             SubscriptBox["y", "c"], "[", "0", "]"}], "+", "l"}], ",", 
+           RowBox[{
+            RowBox[{
+             SubscriptBox["y", "c"], "[", "tmax", "]"}], "-", "l"}]}], 
+          "}"}]}], "}"}]}], "/.", "replace"}]}], "\[IndentingNewLine]", "]"}],
+    ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"t", ",", "0", ",", "tmax"}], "}"}], ",", 
+   RowBox[{"AnimationRate", "\[Rule]", "animationRate"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.6944553271138067`*^9, 3.6944553304178944`*^9}, {
+  3.6944563932227097`*^9, 3.694456410467661*^9}, {3.694456442309108*^9, 
+  3.694456491222477*^9}, {3.6947096153526163`*^9, 3.6947096710301366`*^9}, {
+  3.7207457435319557`*^9, 3.7207459429811535`*^9}, {3.7207505746206656`*^9, 
+  3.7207507058313446`*^9}, {3.720750748552755*^9, 3.72075076441768*^9}, {
+  3.7207508558653483`*^9, 3.7207508952135353`*^9}, {3.7208267377668705`*^9, 
+  3.7208267409241533`*^9}, {3.720826803648898*^9, 3.7208268080323343`*^9}, {
+  3.720826887273424*^9, 3.7208268901860886`*^9}, {3.720827229066673*^9, 
+  3.720827307894001*^9}, {3.7208273683730774`*^9, 3.7208274772380567`*^9}, {
+  3.7208275094844007`*^9, 3.7208275131927967`*^9}, {3.7208276863690243`*^9, 
+  3.7208276934519525`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 455, 9, 171, "Title"],
+Cell[1038, 33, 92, 2, 30, "Input"],
+Cell[CellGroupData[{
+Cell[1155, 39, 124, 2, 70, "Section"],
+Cell[CellGroupData[{
+Cell[1304, 45, 107, 1, 28, "Subsubsubsubsection"],
+Cell[1414, 48, 1940, 43, 128, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3391, 96, 108, 1, 28, "Subsubsubsubsection"],
+Cell[3502, 99, 1009, 21, 50, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4548, 125, 119, 1, 28, "Subsubsubsubsection"],
+Cell[4670, 128, 1741, 39, 126, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6460, 173, 249, 3, 70, "Section"],
+Cell[CellGroupData[{
+Cell[6734, 180, 149, 2, 28, "Subsubsubsubsection"],
+Cell[6886, 184, 563, 17, 50, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7486, 206, 161, 2, 28, "Subsubsubsubsection"],
+Cell[7650, 210, 672, 22, 55, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8371, 238, 145, 2, 70, "Section"],
+Cell[CellGroupData[{
+Cell[8541, 244, 111, 1, 28, "Subsubsubsubsection"],
+Cell[8655, 247, 1352, 41, 53, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10044, 293, 116, 1, 28, "Subsubsubsubsection"],
+Cell[10163, 296, 987, 30, 30, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11187, 331, 116, 1, 28, "Subsubsubsubsection"],
+Cell[11306, 334, 785, 23, 50, "Input"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12140, 363, 94, 1, 70, "Section"],
+Cell[12237, 366, 4138, 103, 245, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
